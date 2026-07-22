@@ -24,16 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 1. 先配置 Node.js 环境 (更新至 v4，使用 Node 22)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
+      # 2. 再安装 pnpm (升级到 v4，避免旧版的 pnpm store 逻辑报错)
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
+      # 3. 安装依赖 (加上 --no-frozen-lockfile 防范 lockfile 缺失)
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
