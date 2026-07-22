@@ -2,18 +2,14 @@ name: Deploy Slidev to Pages
 
 on:
   push:
-    branches: [ main ] # 当 push 到 main 分支时自动触发
-
-  # 允许在 GitHub 页面手动触发构建
+    branches: [ main ]
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，允许部署到 GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 只允许一个并发部署
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -28,22 +24,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build Slidev
-        # 如果是用户/组织的主页仓库 (如 username.github.io)，需要把 --base 后的斜杠去掉，改写为 --base /
         run: pnpm build --base /os2026/
 
       - name: Setup Pages
