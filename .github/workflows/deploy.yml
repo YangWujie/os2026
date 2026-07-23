@@ -40,7 +40,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Slidev
-        run: pnpm run build -- --base /os2026/
+        run: pnpm exec slidev build --base /os2026/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
