@@ -5,7 +5,7 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: 课程简介
+title: Welcome to Slidev
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -24,22 +24,29 @@ comark: true
 duration: 35min
 ---
 
-# 操作系统
+# Welcome to Slidev
 
-课程简介
+Presentation slides for developers
+
+<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
+  Press Space for next page <carbon:arrow-right />
+</div>
+
+<div class="abs-br m-6 text-xl">
+  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
+    <carbon:edit />
+  </button>
+  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
+    <carbon:logo-github />
+  </a>
+</div>
+
+<!--
+The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+-->
 
 ---
-layout: center
----
-
-<h1 class="text-center" style="margin-bottom: 60px;">授课教师</h1>
-
-<TeacherInfo
-  name="杨武杰"
-  email="wjyang@bjtu.edu.cn"
-  phone="135-5212-7501"
-/>
-
+transition: fade-out
 ---
 
 # What is Slidev?
@@ -653,32 +660,3 @@ class: text-center
 [Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
 
 <PoweredBySlidev mt-10 />
-
----
-
-<style>
-.slidev-layout {
-  font-size: 28px;
-}
-
-.slidev-layout h1 {
-  font-size: 64px; /* Set font size for h1 (main title) */
-}
-
-.slidev-layout h2 {
-  font-size: 52px; /* Set font size for h2 (subtitles) */
-}
-
-.slidev-layout h3 {
-  font-size: 40px; /* Set font size for h3, if needed */
-}
-
-/* 确保标题和内容的间距 */
-.slidev-layout h1 {
-  margin-top: 2.5rem;
-  margin-bottom: 3.5rem; /* 标题和内容之间的间距 */
-}
-
-.slidev-layout p {
-  line-height: 1.5;
-}
